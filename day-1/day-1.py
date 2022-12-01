@@ -17,8 +17,6 @@ for line in lines:
         if calories > highest_calories:
             elf_with_highest_calories = elf
             highest_calories = calories
-            print(f'New Winner! Elf {elf_with_highest_calories} with {highest_calories}\n\n')
-        print(f'Elf {elf} with {calories}\n\n')
         elf += 1
         calories = 0
     else:
