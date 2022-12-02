@@ -3,23 +3,11 @@ import os
 file_dir = os.path.dirname(os.path.realpath(__file__))
 file_name = os.path.join(file_dir, 'input/input.txt')
 file = open(file_name, 'r')
+lines = file.read()
 
-lines = file.readlines()
+elves = [elf.split('\n') for elf in lines.split('\n\n')]
+sums = sorted([sum([int(calories) for calories in elf if calories != '']) for elf in elves])
 
-elf = 1
-calories = 0
-elves = {}
+top3_calories = sum(sums[-3:])
 
-for line in lines:
-    if line == "\n":
-        elves[elf] = calories
-        elf += 1
-        calories = 0
-    else:
-        calories += int(line)
-
-sorted_calories = sorted(list(elves.values()))
-top3 = sorted_calories[-3:]
-sum = sum(top3)
-
-print(f'Sum of the top 3 Elves: {sum}\n')
+print(f"Sum of Top 3 Elves with most calories: {top3_calories}")
