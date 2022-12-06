@@ -15,7 +15,7 @@ input = read_input('input/input.txt')
 for i in range(distinct_chars,len(input)):
     seek_string = input[i-distinct_chars:i]
 
-    count = sum([seek_string.count(char) for char in seek_string])
+    count = len(set(seek_string))
 
     if count == distinct_chars:
         print(i)
